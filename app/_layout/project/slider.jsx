@@ -1,0 +1,28 @@
+'use client';
+
+import { Center } from '@/components';
+
+/**
+ * @param {Object} props
+ * @param {'image'} props.type
+ * @param {string} props.source
+ */
+export function ProjectSlider({ type, source }) {
+  return (
+    <Center
+      className='relative w-1/4 overflow-hidden rounded'
+      style={{
+        minWidth: '150px',
+        height: '20vw',
+      }}
+    >
+      {type === 'image' && (
+        <img
+          src={source}
+          alt='project item'
+          className='absolute inset-0 size-full object-cover'
+        />
+      )}
+    </Center>
+  );
+}
