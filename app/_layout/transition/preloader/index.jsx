@@ -5,13 +5,10 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Dot } from 'lucide-react';
 
-import { Center } from '@/app/_components/stack/center.styled';
 import { preloaderWords } from '@/data';
 import { useDimensions, useTimeOut } from '@/hooks';
 
 import { fade, slideUp } from './variants';
-
-const MotionComponent = motion(Center);
 
 export function Preloader({ onComplete }) {
   const [index, setIndex] = useState(0);
@@ -49,23 +46,23 @@ export function Preloader({ onComplete }) {
   };
 
   return (
-    <MotionComponent
-      className='fixed z-50 h-screen w-screen cursor-wait bg-foreground'
+    <motion.div
+      className='fixed z-50 flex h-screen w-screen cursor-wait items-center justify-center bg-foreground'
       variants={slideUp}
       initial='initial'
       exit='exit'
     >
       {width > 0 ? (
         <>
-          <MotionComponent
-            className='text-3xl text-background md:text-4xl'
+          <motion.div
+            className='flex items-center justify-center text-3xl text-background md:text-4xl'
             variants={fade}
             initial='initial'
             animate='enter'
           >
             <Dot size={48} className='me-3' />
             <p>{preloaderWords[index]}</p>
-          </MotionComponent>
+          </motion.div>
           <motion.svg className='absolute top-0 -z-10 h-[calc(100%+300px)] w-full'>
             <motion.path
               className='fill-foreground'
@@ -76,6 +73,6 @@ export function Preloader({ onComplete }) {
           </motion.svg>
         </>
       ) : null}
-    </MotionComponent>
+    </motion.div>
   );
 }
