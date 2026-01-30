@@ -11,7 +11,7 @@ import { slideLeft } from './variants';
 
 const MotionComponent = motion(FixedOverlay);
 
-export function OffcanvasBody() {
+export function OffcanvasBody({ onLinkClick }) {
   return (
     <MotionComponent
       className='z-40'
@@ -24,7 +24,7 @@ export function OffcanvasBody() {
 
       <div className='absolute right-0 top-0 h-screen bg-foreground text-background'>
         <div className='flex h-full flex-col justify-between p-24'>
-          <OffcanvasLinks />
+          <OffcanvasLinks onLinkClick={onLinkClick} />
           <OffcanvasFooter />
         </div>
       </div>

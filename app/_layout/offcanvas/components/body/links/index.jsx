@@ -11,12 +11,27 @@ import { navItems } from '@/data';
 
 import { scale, slideOut } from './variants';
 
-export function OffcanvasLinks() {
+export function OffcanvasLinks({ onLinkClick }) {
   const pathname = usePathname();
   const [activeLink, setActiveLink] = useState(pathname);
 
+  const handleSmoothScroll = (href) => {
+    if (pathname === '/') {
+      const sectionId = href.replace('#', '').replace('/', '');
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        onLinkClick?.();
+      }
+    }
+  };
+
   const items = navItems.map(({ href, title }, index) => {
     const id = index;
+    const isHome = pathname === '/';
+    const isHash = href.startsWith('#');
+    const to = href === '#home' ? '/' : href;
+
     return (
       <motion.li
         key={id}
@@ -35,9 +50,19 @@ export function OffcanvasLinks() {
         >
           <Dot size={36} />
         </motion.div>
-        <Link href={href} className='text-6xl capitalize'>
-          {title}
-        </Link>
+        {isHome && isHash ? (
+          <button
+            type="button"
+            onClick={() => handleSmoothScroll(href)}
+            className='text-6xl capitalize hover:opacity-80 transition-opacity'
+          >
+            {title}
+          </button>
+        ) : (
+          <Link href={to} className='text-6xl capitalize'>
+            {title}
+          </Link>
+        )}
       </motion.li>
     );
   });

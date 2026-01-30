@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Smooth scroll + premium feel */
+html {
+  scroll-behavior: smooth;
+}
+
 /* Base styles */
 html,
 body {
@@ -47,3 +52,5 @@ body {
 *::-webkit-scrollbar-thumb:hover {
   background-color: hsl(var(--secondary));
 }
+
+/* Intentionally no global hiding of portfolio media */

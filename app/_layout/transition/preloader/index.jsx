@@ -1,11 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { motion } from 'framer-motion';
 import { Dot } from 'lucide-react';
 
-import { Center } from '@/components';
+import { Center } from '@/app/_components/stack';
 import { preloaderWords } from '@/data';
 import { useDimensions, useTimeOut } from '@/hooks';
 
@@ -13,15 +13,19 @@ import { fade, slideUp } from './variants';
 
 const MotionComponent = motion(Center);
 
-export function Preloader() {
+export function Preloader({ onComplete }) {
   const [index, setIndex] = useState(0);
   const { width, height } = useDimensions();
 
   useTimeOut({
     callback: () => {
+      if (index === preloaderWords.length - 1) {
+        if (onComplete) onComplete();
+        return;
+      }
       setIndex(prevIndex => prevIndex + 1);
     },
-    duration: index === 0 ? 500 : 250,
+    duration: index === 0 ? 1000 : 150,
     deps: [index],
   });
 

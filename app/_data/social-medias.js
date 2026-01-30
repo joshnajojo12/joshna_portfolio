@@ -1,18 +1,10 @@
 export const socialMedias = [
   {
-    href: 'https://www.awwwards.com/dennissnellenberg/',
-    title: 'Awwwards',
+    href: 'https://github.com/joshnajojo12',
+    title: 'GitHub',
   },
   {
-    href: 'https://www.instagram.com/codebydennis/',
-    title: 'Instagram',
-  },
-  {
-    href: 'https://dribbble.com/dennissnellenberg',
-    title: 'Dribbble',
-  },
-  {
-    href: 'https://www.linkedin.com/in/dennissnellenberg/',
+    href: 'https://www.linkedin.com/in/joshnajojo/',
     title: 'LinkedIn',
   },
 ];

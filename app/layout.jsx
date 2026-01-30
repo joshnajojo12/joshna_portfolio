@@ -1,3 +1,4 @@
+import { PreloaderWrapper } from '@/components';
 import { rootMetadata } from '@/config';
 import { neue_montreal } from '@/fonts';
 import { Offcanvas } from '@/layout';
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
     <html lang='en' dir='ltr' className={neue_montreal.variable}>
       <body className={neue_montreal.className}>
         <Providers>
+          <PreloaderWrapper />
           <Offcanvas />
           {children}
         </Providers>

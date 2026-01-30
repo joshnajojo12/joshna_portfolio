@@ -15,10 +15,14 @@ export function Offcanvas() {
     setOpen(false);
   }, [pathname]);
 
+  const handleLinkClick = () => {
+    setOpen(false);
+  };
+
   return (
     <>
       <AnimatePresence mode='wait'>
-        {isOpen ? <OffcanvasBody /> : null}
+        {isOpen ? <OffcanvasBody onLinkClick={handleLinkClick} /> : null}
       </AnimatePresence>
       <OffcanvasToggle isOpen={isOpen} handleOpen={setOpen} />
     </>

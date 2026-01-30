@@ -1,62 +1,158 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { motion, useAnimationControls, useMotionValue, useScroll, useSpring, useTransform } from 'framer-motion';
+import { ChevronDown, MoveDownRight } from 'lucide-react';
+import Image from 'next/image';
 
-import { motion } from 'framer-motion';
-import { MoveDownRight } from 'lucide-react';
+import { ParallaxReveal, ParallaxSlider } from '@/components';
 
-import { ParallaxSlider } from '@/components';
 
 import { slideUp } from './variants';
 
 export function Header() {
-  // ✅ Prevent hydration flash
-  const [mounted, setMounted] = useState(false);
+  const { scrollY } = useScroll();
+  const scrollIndicatorOpacity = useTransform(scrollY, [0, 280], [1, 0]);
+  const scrollIndicatorY = useTransform(scrollY, [0, 200], [0, 24]);
+  const indicatorOpacity = useSpring(scrollIndicatorOpacity, { stiffness: 100, damping: 30 });
+  const indicatorY = useSpring(scrollIndicatorY, { stiffness: 100, damping: 30 });
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  // Subtle cursor-reactive motion for the crystal
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const springX = useSpring(x, { stiffness: 60, damping: 20, mass: 0.6 });
+  const springY = useSpring(y, { stiffness: 60, damping: 20, mass: 0.6 });
+  const crystalControls = useAnimationControls();
 
-  // ⛔ Render nothing until client is ready
-  if (!mounted) {
-    return null;
-  }
+  const handlePointerMove = (event) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const relativeX = (event.clientX - (rect.left + rect.width / 2)) / rect.width;
+    const relativeY = (event.clientY - (rect.top + rect.height / 2)) / rect.height;
+
+    // Very subtle parallax toward cursor
+    x.set(relativeX * 28);
+    y.set(relativeY * 20);
+  };
+
+  const handlePointerLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  const handleBubbleClick = async () => {
+    // Burst effect: quick expand + fade + blur, then gently reform
+    await crystalControls.start({
+      scale: 1.25,
+      opacity: 0,
+      filter: 'blur(14px)',
+      transition: { duration: 0.4, ease: 'easeOut' },
+    });
+    await crystalControls.start({
+      scale: 1,
+      opacity: 1,
+      filter: 'blur(0px)',
+      transition: { duration: 0.7, ease: 'easeOut' },
+    });
+  };
 
   return (
     <motion.header
-      className='relative h-screen overflow-hidden bg-secondary-foreground text-background'
+      id="home"
+      className="relative h-[100dvh] overflow-hidden bg-black text-white"
       variants={slideUp}
-      initial='initial'
-      animate='enter'
+      initial="initial"
+      animate="enter"
+      onPointerMove={handlePointerMove}
+      onPointerLeave={handlePointerLeave}
     >
-      <div className='relative flex h-full flex-col justify-end gap-2 md:flex-col-reverse md:justify-normal'>
-        <div className='select-none'>
+      {/* Central photo with gentle motion */}
+      <motion.div
+        aria-hidden="true"
+        className="absolute inset-0 z-0 flex items-center justify-center"
+        animate={{ y: [-6, 6, -6], scale: [1.01, 1.03, 1.01] }}
+        transition={{ duration: 20, ease: 'easeInOut', repeat: Infinity }}
+      >
+        {/* Breathing + subtle rotation */}
+        <motion.div
+          className="relative h-[30vw] w-[30vw] min-h-[300px] min-w-[300px] rounded-full"
+          style={{ x: springX, y: springY }}
+          animate={{
+            scale: [1, 1.035, 1],
+            rotate: [-1.25, 1.25, -1.25],
+          }}
+          transition={{
+            duration: 24,
+            ease: 'easeInOut',
+            repeat: Infinity,
+          }}
+        >
+          <motion.div
+            className="relative h-full w-full overflow-hidden rounded-full cursor-pointer"
+            animate={crystalControls}
+            initial={{ scale: 1, opacity: 1, filter: 'blur(0px)' }}
+            onClick={handleBubbleClick}
+          >
+            <Image
+              src="/images/personal/joshna.jpg"
+              alt="Joshna Jojo"
+              fill
+              priority
+              className="object-cover object-center"
+            />
+          </motion.div>
+        </motion.div>
+      </motion.div>
+
+      {/* soft dark veil only for text readability */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 z-0 bg-gradient-to-b from-black/25 via-transparent to-black/40"
+      />
+
+      {/* Content */}
+      <div className="relative z-10 flex h-full flex-col justify-end gap-2 md:flex-col-reverse md:justify-normal">
+        <div className="select-none">
           <h1
             suppressHydrationWarning
-            className='text-[clamp(4rem,12vw,10rem)] leading-none'
+            className="text-[clamp(4rem,12vw,10rem)] leading-none"
           >
             <ParallaxSlider repeat={4} baseVelocity={4}>
-              <span className='pe-12'>
+              <span className="pe-12">
                 Joshna Jojo
-                <span className='spacer'>—</span>
+                <span className="spacer">—</span>
               </span>
             </ParallaxSlider>
           </h1>
         </div>
 
-        <div className='md:ml-auto'>
-          <div className='mx-10 max-md:my-12 md:mx-36'>
-            <div className='mb-4 md:mb-20'>
+        <div className="md:ml-auto">
+          <div className="mx-10 max-md:my-12 md:mx-36">
+            <div className="mb-4 md:mb-20">
               <MoveDownRight size={28} strokeWidth={1.25} />
             </div>
 
-            <h4 className='text-[clamp(1.55em,2.5vw,2.75em)]'>
-              <span className='block'>Freelance</span>
-              <span className='block'>Designer &amp; Developer</span>
+            <h4 className="text-[clamp(1.55em,2.5vw,2.75em)]">
+              <span className="block"><ParallaxReveal paragraph="Freelance" /></span>
+              <span className="block"><ParallaxReveal paragraph="Designer & Developer" /></span>
             </h4>
           </div>
         </div>
       </div>
+
+      {/* Scroll-down indicator — fades as user scrolls */}
+      <motion.div
+        aria-hidden="true"
+        className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-white/70"
+        style={{ opacity: indicatorOpacity, y: indicatorY }}
+      >
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 2.2, ease: 'easeInOut', repeat: Infinity }}
+          className="flex flex-col items-center gap-1"
+        >
+          <span className="text-[10px] uppercase tracking-[0.2em]">Scroll</span>
+          <ChevronDown size={20} strokeWidth={2} />
+        </motion.div>
+      </motion.div>
     </motion.header>
   );
 }

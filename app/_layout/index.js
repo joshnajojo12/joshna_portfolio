@@ -1,8 +1,8 @@
-export * from './contact';
-export * from './description';
-export * from './header';
-export * from './navbar';
-export * from './offcanvas';
-export * from './project';
-export * from './thumbnail';
-export * from './transition';
+export { Contact } from './contact';
+export { Description } from './description';
+export { Header } from './header';
+export { Navbar } from './navbar';
+export { Offcanvas } from './offcanvas';
+export { Project } from './project';
+export { Thumbnail } from './thumbnail';
+export { Preloader, Transition } from './transition';

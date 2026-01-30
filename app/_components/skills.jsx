@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
+
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 
@@ -54,6 +55,7 @@ export default function Skills() {
   return (
     <section
       ref={sectionRef}
+      id="skills"
       className="relative z-10 flex flex-col items-center justify-center overflow-hidden bg-white px-4 py-24 sm:px-8 md:py-32"
     >
       {/* Section Header */}
@@ -74,8 +76,8 @@ export default function Skills() {
         style={{ x: xRow1, filter: blur, opacity }}
         className="mb-16 flex gap-8 md:gap-16 lg:gap-20"
       >
-        {skillsRow1.map((skill) => (
-          <SkillCard key={skill.name} skill={skill} />
+        {skillsRow1.map((skill, i) => (
+          <SkillCard key={skill.name} skill={skill} index={i} />
         ))}
       </motion.div>
 
@@ -84,35 +86,65 @@ export default function Skills() {
         style={{ x: xRow2, filter: blur, opacity }}
         className="flex gap-8 md:gap-16 lg:gap-20"
       >
-        {skillsRow2.map((skill) => (
-          <SkillCard key={skill.name} skill={skill} />
+        {skillsRow2.map((skill, i) => (
+          <SkillCard key={skill.name} skill={skill} index={i + skillsRow1.length} />
         ))}
       </motion.div>
     </section>
   );
 }
 
-function SkillCard({ skill }) {
+const cardVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.06,
+      duration: 0.5,
+      ease: [0.33, 1, 0.68, 1],
+    },
+  }),
+};
+
+function SkillCard({ skill, index = 0 }) {
   return (
-    <div className="group flex flex-col items-center gap-3 md:gap-4">
+    <motion.div
+      className="group flex flex-col items-center gap-3 md:gap-4"
+      variants={cardVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-40px' }}
+      custom={index}
+      whileHover={{
+        y: -6,
+        transition: { duration: 0.25, ease: [0.33, 1, 0.68, 1] },
+      }}
+    >
       {/* Icon Container */}
-      <div className="relative h-24 w-24 rounded-2xl bg-neutral-50 shadow-sm transition-shadow duration-300 md:h-28 md:w-28 lg:h-32 lg:w-32">
+      <motion.div
+        className="relative h-24 w-24 rounded-2xl bg-neutral-50 shadow-sm md:h-28 md:w-28 lg:h-32 lg:w-32"
+        whileHover={{
+          boxShadow: '0 20px 40px -12px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.04)',
+          transition: { duration: 0.25 },
+        }}
+      >
         <div className="absolute inset-0 flex items-center justify-center">
           <Image
             src={skill.icon}
             alt={skill.name}
             width={80}
             height={80}
-            className="opacity-65 transition-opacity duration-300 group-hover:opacity-80"
+            className="opacity-65 transition-opacity duration-300 group-hover:opacity-90"
             loading="lazy"
           />
         </div>
-      </div>
+      </motion.div>
 
       {/* Label */}
       <span className="text-xs font-normal text-neutral-500 md:text-sm">
         {skill.name}
       </span>
-    </div>
+    </motion.div>
   );
 }

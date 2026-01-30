@@ -8,11 +8,11 @@ export const thumbnailOptions = [
     githubUrl: 'https://github.com/joshnajojo12/REMINDEBUDDY',
   },
   {
-    href: '/smart-path',
-    title: 'Smart Path',
+    href: '/safety-app',
+    title: 'Safety App',
     type: 'video',
     source: '/videos/smartpath.mp4',
-    liveUrl: 'https://smart-path.vercel.app/',
-    githubUrl: 'https://github.com/joshnajojo12/SmartPath',
+    liveUrl: '#',
+    githubUrl: '#',
   },
 ];

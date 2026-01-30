@@ -19,7 +19,8 @@ export function ProjectSlider({ type, source }) {
       {type === 'image' && (
         <img
           src={source}
-          alt='project item'
+          alt=''
+          aria-hidden="true"
           className='absolute inset-0 size-full object-cover'
         />
       )}

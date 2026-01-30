@@ -53,31 +53,7 @@ export function UserDetails({ transformX }) {
       </Row>
 
       <Row>
-        <div className='flex w-full flex-col gap-4 lg:flex-row'>
-          <div>
-            <a href='mailto:info@joshna.com'>
-              <MagneticButton
-                variant='outline'
-                size='md'
-                className='w-full border-muted-foreground'
-              >
-                joshnajojo200621@gmail.com
-              </MagneticButton>
-            </a>
-          </div>
-
-          <div>
-            <a href='tel:+91 9847781420'>
-              <MagneticButton
-                variant='outline'
-                size='md'
-                className='w-full border-muted-foreground'
-              >
-                +91 9847781420
-              </MagneticButton>
-            </a>
-          </div>
-        </div>
+        {/* Intentionally kept clean: message form only */}
       </Row>
     </Container>
   );

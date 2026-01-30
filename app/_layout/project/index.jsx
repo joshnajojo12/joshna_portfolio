@@ -27,7 +27,11 @@ export function Project() {
   });
 
   return (
-    <section ref={containerRef} className='relative z-10 mt-14'>
+    <section
+      ref={containerRef}
+      id="projects"
+      className='relative z-10 mt-10'
+    >
       <div className='grid items-center'>
         <div className='bg-background'>
           <motion.div
@@ -52,7 +56,7 @@ export function Project() {
         </div>
 
         <motion.div
-          className='w-screen bg-background'
+          className='w-screen bg-foreground'
           style={{
             height: transformY,
             borderRadius: '0 0 50% 50%',

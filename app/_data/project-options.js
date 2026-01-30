@@ -54,21 +54,5 @@ export const projectOptions = {
         { name: 'CSS', icon: '/projects/css.png' },
       ],
     },
-    {
-      type: 'image',
-      source: 'Dennis-Portfolio/images/ffoc9zsoeusptc7jcid5',
-      skills: [
-        { name: 'JavaScript', icon: '/projects/javascript.png' },
-        { name: 'HTML', icon: '/projects/html.png' },
-      ],
-    },
-    {
-      type: 'video',
-      source: 'Dennis-Portfolio/videos/usiswniv5qhgu2vamhnx',
-      skills: [
-        { name: 'Next.js', icon: '/projects/nextjs.png' },
-        { name: 'Tailwind', icon: '/projects/tailwind.png' },
-      ],
-    },
   ],
 };
