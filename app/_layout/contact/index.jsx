@@ -48,7 +48,7 @@ export function Contact() {
         style={{ scaleY: veilScaleY }}
       />
       <motion.div
-        style={{ paddingBlock: 'clamp(2em, 8vh, 5em)' }}
+        style={{ paddingBlock: 'clamp(1em, 4vh, 2em)' }}
         initial='hidden'
         whileInView='visible'
         viewport={{ once: true, margin: '-80px' }}

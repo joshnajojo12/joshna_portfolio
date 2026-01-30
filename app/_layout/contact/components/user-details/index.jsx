@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { ArrowDownLeft } from 'lucide-react';
 import Link from 'next/link';
 
+import { ParallaxReveal } from '@/app/_components/parallax/reveal';
 import { MagneticButton } from '@/components';
 
 import { Container, ImageWrapper, MainTitle, Row } from './index.styled';
@@ -26,11 +27,15 @@ export function UserDetails({ transformX }) {
       <Row>
         <div className='flex items-center gap-8'>
           <ImageWrapper></ImageWrapper>
-          <MainTitle>Let’s work</MainTitle>
+          <MainTitle>
+            <ParallaxReveal paragraph='Let’s work' />
+          </MainTitle>
         </div>
 
         <div className='flex items-center justify-between'>
-          <MainTitle>together</MainTitle>
+          <MainTitle>
+            <ParallaxReveal paragraph='together' />
+          </MainTitle>
           <div>
             <ArrowDownLeft size={28} strokeWidth={1.25} />
           </div>
@@ -52,9 +57,7 @@ export function UserDetails({ transformX }) {
         </div>
       </Row>
 
-      <Row>
-        {/* Intentionally kept clean: message form only */}
-      </Row>
+      <Row>{/* Intentionally kept clean: message form only */}</Row>
     </Container>
   );
 }

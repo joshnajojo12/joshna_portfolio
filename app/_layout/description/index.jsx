@@ -9,13 +9,7 @@ export function Description() {
     <section id='about' className='relative mx-auto max-w-7xl px-8 py-32'>
       <div className='grid grid-cols-1 gap-y-10 lg:grid-cols-12'>
         {/* LEFT TEXT */}
-        <motion.div
-          className='lg:col-span-8'
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
-        >
+        <div className='lg:col-span-8'>
           <h2 className='text-3xl leading-tight md:text-4xl lg:text-5xl'>
             <ParallaxReveal paragraph='Exploring technology, creativity, and innovation to build meaningful digital experiences with real-world impact.' />
           </h2>
@@ -23,7 +17,7 @@ export function Description() {
           <p className='mt-6 max-w-xl text-base text-neutral-700 lg:text-lg'>
             <ParallaxReveal paragraph='I enjoy working across web development, UI/UX design, and collaborative projects, where ideas, execution, and teamwork come together to solve real problems.' />
           </p>
-        </motion.div>
+        </div>
 
         {/* RIGHT SIDE — ABOUT ME BUTTON */}
         <motion.div

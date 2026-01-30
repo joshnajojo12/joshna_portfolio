@@ -14,7 +14,7 @@ export const Container = styled.div`
 `;
 
 export const Row = styled.div`
-  --default-padding: clamp(4em, 14vh, 10em);
+  --default-padding: clamp(2em, 6vh, 4em);
 
   &:nth-child(1) {
     padding-block-end: calc(var(--default-padding) / 2);
