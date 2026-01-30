@@ -1,6 +1,14 @@
 export const thumbnailOptions = [
   {
-    href: '/reminder-buddy',
+    href: '#',
+    title: 'Portfolio',
+    type: 'video',
+    source: '/videos/home_joshna.mp4',
+    liveUrl: '#',
+    githubUrl: '#',
+  },
+  {
+    href: 'https://reminde-buddy.vercel.app/',
     title: 'Reminder Buddy',
     type: 'video',
     source: '/videos/reminder-buddy.mp4',
@@ -8,11 +16,11 @@ export const thumbnailOptions = [
     githubUrl: 'https://github.com/joshnajojo12/REMINDEBUDDY',
   },
   {
-    href: '/safety-app',
+    href: 'https://vigilant-path-guard-six.vercel.app/',
     title: 'Safety App',
     type: 'video',
     source: '/videos/smartpath.mp4',
-    liveUrl: '#',
+    liveUrl: 'https://vigilant-path-guard-six.vercel.app/',
     githubUrl: '#',
   },
 ];

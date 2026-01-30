@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Dot } from 'lucide-react';
 
-import { Center } from '@/app/_components/stack';
+import { Center } from '@/app/_components/stack/center.styled';
 import { preloaderWords } from '@/data';
 import { useDimensions, useTimeOut } from '@/hooks';
 

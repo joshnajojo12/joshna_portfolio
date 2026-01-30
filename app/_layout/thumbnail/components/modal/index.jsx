@@ -4,7 +4,7 @@ import { forwardRef, useEffect, useRef } from 'react';
 
 import { motion } from 'framer-motion';
 
-import { Center } from '@/components';
+import { Center } from '@/app/_components/stack/center.styled';
 import { thumbnailOptions } from '@/data';
 import { randomId } from '@/utils';
 

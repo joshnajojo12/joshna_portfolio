@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { AnimatePresence } from 'framer-motion';
 
-import { Preloader } from '@/app/_layout/transition';
+import { Preloader } from '@/app/_layout/transition/preloader';
 
 export function PreloaderWrapper() {
   const [isLoading, setIsLoading] = useState(true);
