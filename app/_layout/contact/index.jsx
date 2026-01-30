@@ -37,20 +37,20 @@ export function Contact() {
 
   return (
     <motion.footer
-      id="contact"
+      id='contact'
       ref={containerRef}
       className='relative bg-foreground text-background'
       style={{ y: transformY }}
     >
       <motion.div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-0 bg-foreground origin-top"
+        aria-hidden='true'
+        className='pointer-events-none absolute inset-0 z-0 origin-top bg-foreground'
         style={{ scaleY: veilScaleY }}
       />
       <motion.div
-        style={{ paddingBlock: 'clamp(4em, 14vh, 10em)' }}
-        initial="hidden"
-        whileInView="visible"
+        style={{ paddingBlock: 'clamp(2em, 8vh, 5em)' }}
+        initial='hidden'
+        whileInView='visible'
         viewport={{ once: true, margin: '-80px' }}
         variants={stagger}
       >

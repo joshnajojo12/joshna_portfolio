@@ -25,7 +25,7 @@ export function SocialInfo() {
   });
 
   return (
-    <div className='px-12 pb-4 pt-10'>
+    <div className='px-12 pb-4 pt-5'>
       <div className='flex flex-wrap items-stretch justify-between gap-5'>
         {/* LEFT INFO */}
         <div className='flex gap-8'>
