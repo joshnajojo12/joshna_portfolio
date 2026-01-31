@@ -38,6 +38,9 @@ This project may use the following environment variables (see `.env.local.exampl
 - `EMAIL_PASSWORD` - App password for email service
 
 ## Recent Changes
+- January 31, 2026: Fixed preloader not completing
+  - Fixed useDimensions hook to use useState instead of useRef, so it triggers re-render when window dimensions are set
+  - This was causing the preloader to stay stuck and never show content
 - January 31, 2026: Fixed client-side errors
   - Updated thumbnail-options.js to use local images instead of missing video files
   - Updated project-options.js to use local images instead of Cloudinary videos
