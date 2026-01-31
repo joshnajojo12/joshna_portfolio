@@ -38,4 +38,9 @@ This project may use the following environment variables (see `.env.local.exampl
 - `EMAIL_PASSWORD` - App password for email service
 
 ## Recent Changes
+- January 31, 2026: Fixed client-side errors
+  - Updated thumbnail-options.js to use local images instead of missing video files
+  - Updated project-options.js to use local images instead of Cloudinary videos
+  - Added null checks to GSAP hooks (use-follow-pointer.js) to prevent TypeError
+  - Fixed github.svg reference to use existing github.png
 - January 31, 2026: Initial import and Replit environment setup

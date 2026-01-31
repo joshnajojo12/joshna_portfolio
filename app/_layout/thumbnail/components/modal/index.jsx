@@ -58,7 +58,7 @@ export const ThumbnailModal = forwardRef(function ThumbnailModal(
               rel='noopener noreferrer'
               className='absolute bottom-3 right-3 z-10 rounded-full bg-black/60 p-2 transition hover:bg-black/80'
             >
-              <img src='/github.svg' alt='GitHub' className='size-4' />
+              <img src='/projects/github.png' alt='GitHub' className='size-4' />
             </a>
           )}
         </Center>

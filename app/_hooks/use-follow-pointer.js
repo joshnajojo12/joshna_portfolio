@@ -42,15 +42,17 @@ export function useFollowPointer({ modal, cursor, label }) {
 
   /** @type {(x: number, y: number) => void} */
   const moveItems = useCallback((x, y) => {
-    xMoveModal.current(x);
-    yMoveModal.current(y);
-    xMoveCursor.current(x);
-    yMoveCursor.current(y);
-    xMoveLabel.current(x);
-    yMoveLabel.current(y);
+    if (xMoveModal.current) xMoveModal.current(x);
+    if (yMoveModal.current) yMoveModal.current(y);
+    if (xMoveCursor.current) xMoveCursor.current(x);
+    if (yMoveCursor.current) yMoveCursor.current(y);
+    if (xMoveLabel.current) xMoveLabel.current(x);
+    if (yMoveLabel.current) yMoveLabel.current(y);
   }, []);
 
   useEffect(() => {
+    if (!modal.current || !cursor.current || !label.current) return;
+
     const ctx = gsap.context(() => {
       // Move modal
       xMoveModal.current = gsap.quickTo(modal.current, 'left', {

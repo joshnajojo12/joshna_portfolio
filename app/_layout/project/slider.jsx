@@ -4,7 +4,7 @@ import { Center } from '@/components';
 
 /**
  * @param {Object} props
- * @param {'image'} props.type
+ * @param {'image'|'local-image'} props.type
  * @param {string} props.source
  */
 export function ProjectSlider({ type, source }) {
@@ -16,7 +16,7 @@ export function ProjectSlider({ type, source }) {
         height: '20vw',
       }}
     >
-      {type === 'image' && (
+      {(type === 'image' || type === 'local-image') && (
         <img
           src={source}
           alt=''
