@@ -13,10 +13,14 @@ import { fade, slideUp } from './variants';
 export function Preloader({ onComplete }) {
   const [index, setIndex] = useState(0);
   const { width, height } = useDimensions();
+  const isReady = width > 0 && height > 0;
 
   useTimeOut({
     callback: () => {
       if (index === preloaderWords.length - 1) {
+        if (typeof window !== 'undefined') {
+          window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+        }
         if (onComplete) onComplete();
         return;
       }
@@ -24,6 +28,7 @@ export function Preloader({ onComplete }) {
     },
     duration: index === 0 ? 1000 : 150,
     deps: [index],
+    enabled: isReady,
   });
 
   const initialPath = `M0 0 L${width} 0 L${width} ${height} Q${width / 2} ${
@@ -52,7 +57,7 @@ export function Preloader({ onComplete }) {
       initial='initial'
       exit='exit'
     >
-      {width > 0 ? (
+      {isReady ? (
         <>
           <motion.div
             className='flex items-center justify-center text-3xl text-background md:text-4xl'

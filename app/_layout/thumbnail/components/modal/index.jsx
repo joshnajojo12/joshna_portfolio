@@ -6,7 +6,6 @@ import { motion } from 'framer-motion';
 
 import { Center } from '@/app/_components/stack/center.styled';
 import { thumbnailOptions } from '@/data';
-import { randomId } from '@/utils';
 
 const MotionComponent = motion(Center);
 
@@ -16,26 +15,33 @@ export const ThumbnailModal = forwardRef(function ThumbnailModal(
 ) {
   const videoRefs = useRef([]);
 
-  // 🔥 Control video speed (SAFE)
+  // Preload & sync all preview videos so hover swaps stay seamless.
   useEffect(() => {
     videoRefs.current.forEach(video => {
-      if (video) {
-        video.playbackRate = 3.76; // 👉 CHANGE SPEED HERE (1.5 – 2.5 recommended)
+      if (!video) return;
+      video.playbackRate = 3.76;
+      const playPromise = video.play();
+      if (playPromise?.catch) {
+        playPromise.catch(() => {
+          /* Autoplay can be blocked temporarily; ignore */
+        });
       }
     });
-  }, [active, index]);
+  }, []);
 
   const items = thumbnailOptions.map(
-    ({ title, type, source, githubUrl }, i) => {
-      const id = randomId();
+    ({ title, type, source, poster, githubUrl }, index) => {
+      const stableKey = `${title}-${source}`;
 
       return (
-        <Center key={id} className='relative size-full'>
+        <Center key={stableKey} className='relative size-full'>
           {/* VIDEO OR IMAGE */}
           {type === 'video' ? (
             <video
-              ref={el => (videoRefs.current[i] = el)}
+              ref={el => (videoRefs.current[index] = el)}
               src={source}
+              poster={poster}
+              preload='auto'
               className='size-full object-cover'
               autoPlay
               loop

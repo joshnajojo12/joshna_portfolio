@@ -2,11 +2,7 @@
 
 import { forwardRef } from 'react';
 
-import { motion } from 'framer-motion';
-
 import { CursorShape } from './index.styled';
-
-const MotionComponent = motion(CursorShape);
 
 export const ThumbnailCursorCircle = forwardRef(
   /**
@@ -15,7 +11,7 @@ export const ThumbnailCursorCircle = forwardRef(
    */
   function ThumbnailCursorCircle({ variants, active, ...props }, ref) {
     return (
-      <MotionComponent
+      <CursorShape
         ref={ref}
         className='bg-primary'
         variants={variants}
@@ -34,7 +30,7 @@ export const ThumbnailCursorLabel = forwardRef(
    */
   function ThumbnailCursorLabel({ variants, active, ...props }, ref) {
     return (
-      <MotionComponent
+      <CursorShape
         ref={ref}
         variants={variants}
         initial='initial'

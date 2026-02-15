@@ -16,22 +16,22 @@ export function Project() {
   const { transformX1, transformX2, transformY } =
     useProjectSlider(containerRef);
 
-  const firstSlider = projectOptions.first.map(({ type, source }) => {
+  const firstSlider = projectOptions.first.map(({ type, source, poster }) => {
     const id = randomId();
-    return <ProjectSlider key={id} type={type} source={source} />;
+    return (
+      <ProjectSlider key={id} type={type} source={source} poster={poster} />
+    );
   });
 
-  const secondSlider = projectOptions.second.map(({ type, source }) => {
+  const secondSlider = projectOptions.second.map(({ type, source, poster }) => {
     const id = randomId();
-    return <ProjectSlider key={id} type={type} source={source} />;
+    return (
+      <ProjectSlider key={id} type={type} source={source} poster={poster} />
+    );
   });
 
   return (
-    <section
-      ref={containerRef}
-      id="projects"
-      className='relative z-10 mt-10'
-    >
+    <section ref={containerRef} id='projects' className='relative z-10 mt-10'>
       <div className='grid items-center'>
         <div className='bg-background'>
           <motion.div

@@ -109,6 +109,7 @@ export function Header() {
               src='/images/personal/joshna.jpg'
               alt='Joshna Jojo'
               fill
+              sizes='(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 30vw'
               priority
               className='object-cover object-center'
             />

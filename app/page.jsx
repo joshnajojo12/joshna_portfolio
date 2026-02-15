@@ -1,11 +1,5 @@
 import Skills from './_components/skills';
-import {
-  Contact,
-  Description,
-  Header,
-  Navbar,
-  Thumbnail,
-} from './_layout';
+import { Contact, Description, Header, Navbar, Thumbnail } from './_layout';
 
 /** @type {import('next').Metadata} */
 export const metadata = {

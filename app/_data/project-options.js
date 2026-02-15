@@ -1,8 +1,9 @@
 export const projectOptions = {
   first: [
     {
-      type: 'local-image',
-      source: '/projects/Gemini_Generated_Image_o2s0i6o2s0i6o2s0.png',
+      type: 'video',
+      poster: '/projects/Gemini_Generated_Image_o2s0i6o2s0i6o2s0.png',
+      source: '/videos/home_joshna.mp4',
       skills: [
         { name: 'React', icon: '/projects/reactjs.png' },
         { name: 'CSS', icon: '/projects/css.png' },
@@ -10,8 +11,9 @@ export const projectOptions = {
       ],
     },
     {
-      type: 'local-image',
-      source: '/projects/Gemini_Generated_Image_q0t2t8q0t2t8q0t2.png',
+      type: 'video',
+      poster: '/projects/Gemini_Generated_Image_q0t2t8q0t2t8q0t2.png',
+      source: '/videos/reminder-buddy.mp4',
       skills: [
         { name: 'React', icon: '/projects/reactjs.png' },
         { name: 'JavaScript', icon: '/projects/javascript.png' },
@@ -19,16 +21,18 @@ export const projectOptions = {
       ],
     },
     {
-      type: 'local-image',
-      source: '/projects/Gemini_Generated_Image_qmvelmqmvelmqmve(1).png',
+      type: 'video',
+      poster: '/projects/Gemini_Generated_Image_qmvelmqmvelmqmve(1).png',
+      source: '/videos/smartpath.mp4',
       skills: [
         { name: 'Next.js', icon: '/projects/nextjs.png' },
         { name: 'CSS', icon: '/projects/css.png' },
       ],
     },
     {
-      type: 'local-image',
-      source: '/projects/Gemini_Generated_Image_o2s0i6o2s0i6o2s0.png',
+      type: 'video',
+      poster: '/projects/Gemini_Generated_Image_o2s0i6o2s0i6o2s0.png',
+      source: '/videos/home_joshna.mp4',
       skills: [
         { name: 'Next.js', icon: '/projects/nextjs.png' },
         { name: 'React', icon: '/projects/reactjs.png' },
@@ -39,16 +43,18 @@ export const projectOptions = {
 
   second: [
     {
-      type: 'local-image',
-      source: '/projects/Gemini_Generated_Image_q0t2t8q0t2t8q0t2.png',
+      type: 'video',
+      poster: '/projects/Gemini_Generated_Image_q0t2t8q0t2t8q0t2.png',
+      source: '/videos/reminder-buddy.mp4',
       skills: [
         { name: 'Figma', icon: '/projects/figma.png' },
         { name: 'UI/UX', icon: '/projects/figma.png' },
       ],
     },
     {
-      type: 'local-image',
-      source: '/projects/Gemini_Generated_Image_qmvelmqmvelmqmve(1).png',
+      type: 'video',
+      poster: '/projects/Gemini_Generated_Image_qmvelmqmvelmqmve(1).png',
+      source: '/videos/smartpath.mp4',
       skills: [
         { name: 'React', icon: '/projects/reactjs.png' },
         { name: 'CSS', icon: '/projects/css.png' },

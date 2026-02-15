@@ -1,10 +1,11 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import { styled } from 'styled-components';
 
 import { Center } from '@/components';
 
-export const CursorShape = styled(Center)`
+export const CursorShape = styled(motion(Center))`
   color: ${({ theme }) => theme?.colors?.background};
   width: 5rem;
   height: 5rem;
